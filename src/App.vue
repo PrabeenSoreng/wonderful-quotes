@@ -4,6 +4,7 @@
       <h1>Wonderful quotes...</h1>
     </header>
     <div class="container">
+      <appNewQuote @quoteAdded="newQuote"></appNewQuote>
       <appQuoteGrid :quotes="quotes"></appQuoteGrid>
     </div>
     <footer class="main-footer">
@@ -13,17 +14,24 @@
 </template>
 
 <script>
-import QuoteGrid from "./components/QuoteGrid";
+import QuoteGrid from "./components/QuoteGrid.vue";
+import NewQuote from "./components/NewQuote.vue";
 export default {
   name: "app",
   components: {
-    appQuoteGrid: QuoteGrid
+    appQuoteGrid: QuoteGrid,
+    appNewQuote: NewQuote
   },
   data() {
     return {
       quotes: ["Just a quote to see something."],
       maxQuotes: 10
     };
+  },
+  methods: {
+    newQuote(quote) {
+      this.quotes.push(quote);
+    }
   }
 };
 </script>
