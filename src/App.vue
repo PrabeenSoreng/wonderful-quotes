@@ -5,10 +5,10 @@
     </header>
     <div class="container">
       <appNewQuote @quoteAdded="newQuote"></appNewQuote>
-      <appQuoteGrid :quotes="quotes"></appQuoteGrid>
+      <appQuoteGrid :quotes="quotes" @quoteDeleted="deleteQuote"></appQuoteGrid>
     </div>
     <footer class="main-footer">
-      <h1>This is footer</h1>
+      <h1>Footer</h1>
     </footer>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
   methods: {
     newQuote(quote) {
       this.quotes.push(quote);
+    },
+    deleteQuote(index) {
+      this.quotes.splice(index, 1);
     }
   }
 };
